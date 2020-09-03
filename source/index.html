@@ -12,6 +12,41 @@
   <link href="css/style.min.css" rel="stylesheet">
 </head>
 <body>
-  <h1>Путешествие по Европе</h1>
+  <header class="page-header page-header--nojs page-header--closed container">
+    <img class="page-header__logo" src="img/logo-way.svg" width="57" height="22" alt="Логотип сайта Way">
+    <button class="page-header__toggle" type="button" aria-label="Открыть меню">
+      <span class="page-header__toggle-line"></span>
+    </button>
+    <nav class="page-header__nav">
+      <ul class="page-header__list">
+        <li class="page-header__item">
+          <a class="page-header__link" href="#">О путешествии</a>
+        </li>
+        <li class="page-header__item">
+          <a class="page-header__link" href="#">Цены</a>
+        </li>
+      </ul>
+    </nav>
+    <a class="page-header__tel" href="+7 (499) -784-684-46">+7 (499) -784-684-46</a>
+  </header>
+  <main>
+    <h1 class="visually-hidden">Way - путешествуй без границ</h1>
+    <section class="intro">
+      <div class="intro__mock">
+        <div class="intro__wrapper container">
+          <h2 class="intro__title">Путешествие по Европе</h2>
+        </div>
+      </div>
+      <div class="intro__wrapper intro__wrapper--margin  container">
+        <p class="intro__text">
+          В этом туре вы откроете для себя Европу в новом свете. Вас ждет: море, горы, а также потрясающая красота природы.
+        </p>
+        <a class="intro__link button" href="#">
+          Смотреть тур
+        </a>
+      </div>
+    </section>
+  </main>
+  <script src="js/script.js"></script>
 </body>
 </html>
