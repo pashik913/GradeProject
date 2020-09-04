@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 
   @media (max-width: $tablet-width) {
     min-height: 50px;
@@ -27,13 +28,6 @@
     background-color: #ffffff;
 
     font-weight: 600;
-
-    display: flex;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 50%;
-    margin: 0;
   }
 
   @media (max-width: $mobile-width-only) {
@@ -43,6 +37,15 @@
     width: 100%;
     padding-top: 134px;
     padding-bottom: 284px;
+    margin: 0;
+  }
+}
+
+
+.page-header__logo {
+  @media (max-width: $mobile-width-only) {
+    margin: 10px;
+    display: block;
   }
 }
 
@@ -95,7 +98,21 @@
   font-size: 18px;
   line-height: 32px;
   color: #FE7865;
+
+  padding-left: 36px;
   text-decoration-line: underline;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-image: url("../img/icons/icon-phone-orange.svg");
+  }
 
   @media (max-width: $tablet-width) {
     display: none;
@@ -107,6 +124,16 @@
 
   @media (max-width: $tablet-width) {
     display: none;
+    z-index: 1;
+    top: 0;
+    left: 45%;
+    margin: 0;
+    position: absolute;
+  }
+
+  @media (max-width: $mobile-width-only) {
+    left: 0;
+    width: 100%;
   }
 }
 
@@ -184,7 +211,15 @@
 
 .page-header--nojs .page-header__nav {
   @media (max-width: $tablet-width) {
-    display: block;
+    display: flex;
+    position: relative;
+    left: 0;
+  }
+}
+
+.page-header--nojs {
+  @media (max-width: $tablet-width) {
+    flex-direction: column;
   }
 }
 
