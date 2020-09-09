@@ -1,0 +1,147 @@
+.modal {
+  position: fixed;
+  width: 728px;
+  height: 444px;
+  background-color: #FBF8F8;
+  top: 50%;
+  left: 50%;
+  margin-top: -222px;
+  margin-left: -364px;
+  background-image: url("../img/bg-modal-desktop@1x.jpg");
+  background-repeat: no-repeat;
+  display: none;
+  z-index: 2;
+  overflow: hidden;
+
+  @media (max-width: $mobile-width-only) {
+    background-image: none;
+    width: 320px;
+    min-height: auto;
+  }
+}
+
+.modal__title {
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 170%;
+  color: #48494D;
+
+  margin: 0;
+  margin-bottom: 50px;
+}
+
+.modal__wrapper {
+  margin-left: 338px;
+  text-align: center;
+  padding: 70px 60px;
+
+  @media (max-width: $mobile-width-only) {
+    margin-left: 0;
+    padding: 0 15px;
+    padding-top: 100px;
+    padding-bottom: 185px;
+  }
+}
+
+.modal__button {
+  margin: 0 auto;
+  padding: 17.5px;
+}
+
+.modal__close {
+  background: none;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  top: 20px;
+  right: 20px;
+
+  &:before,
+  &:after {
+    top: 0;
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 1px;
+    background-color: rgba(20, 21, 23, 0.2);
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.modal__list {
+  @include reset-list;
+}
+
+.modal__item {
+  margin-bottom: 20px;
+}
+
+.modal__item-content {
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 6px;
+    height: 7px;
+    top: 16px;
+    left: 15px;
+    background-image: url("../img/icons/icon-snowflake.svg");
+
+    @media (max-width: $mobile-width-only) {
+      left: 21px;
+    }
+  }
+}
+
+.modal__input[type="tel"]::placeholder,
+.modal__input[type="email"]::placeholder {
+  font-size: 14px;
+  line-height: 17px;
+  color: #48494D;
+}
+
+.modal__input {
+  padding: 14px;
+  width: 270px;
+  overflow: hidden;
+  border: 1px solid rgba(20, 21, 23, 0.2);
+}
+
+.modal__input {
+  padding-left: 26px;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-2000px);
+  }
+
+  70% {
+    transform: translateY(30px);
+  }
+
+  90% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.modal.modal-show {
+  display: block;
+
+  animation: bounce 0.6s;
+}

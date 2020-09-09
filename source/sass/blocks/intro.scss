@@ -1,5 +1,6 @@
 .intro__mock {
   background-image: url("../img/bg-main@1x.jpg");
+  background-color: steelblue;
   background-size: cover;
   background-repeat: no-repeat;
   padding-top: 185px;
@@ -24,6 +25,7 @@
 .intro__link {
   position: relative;
   text-align: left;
+  min-width: 360px;
 
   &::before {
     position: absolute;
@@ -48,11 +50,11 @@
 
     margin: 0 auto;
     padding: 20px 40px;
-    width: 250px;
+    min-width: 250px;
   }
 
   @media (max-width: $mobile-width-only) {
-    width: 288px;
+    min-width: 288px;
   }
 }
 
@@ -129,5 +131,6 @@
 
   @media (max-width: $mobile-width-only) {
     margin-top: 0;
+    margin-bottom: 80px;
   }
 }
