@@ -10,6 +10,10 @@
     padding: 0 2.75%;
     justify-content: space-around;
   }
+
+  @media (max-width: $mobile-width-only) {
+    margin-bottom: 100px;
+  }
 }
 
 .prices__main-title {

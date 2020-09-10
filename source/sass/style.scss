@@ -3,6 +3,7 @@
 @import "base/scaffolding.scss";
 @import "base/mixins.scss";
 @import "base/variables.scss";
+@import "base/overlay.scss";
 @import "base/container.scss";
 @import "blocks/visually-hidden.scss";
 @import "blocks/page-header.scss";
@@ -12,7 +13,8 @@
 @import "blocks/countrys.scss";
 @import "blocks/prices.scss";
 @import "blocks/modal.scss";
-@import "blocks/overlay.scss";
+@import "blocks/form.scss";
+@import "blocks/popup-succes.scss";
 @import "blocks/main-footer.scss";
 
 
