@@ -91,6 +91,7 @@ window.addEventListener('keydown', function (evt) {
     if (modal.classList.contains('modal-show')) {
       modal.classList.remove('modal-show');
       modal.classList.remove('modal-error');
+      popupSuccessClose.classList.remove('popup-succes-show');
       document.body.removeChild(overlay);
     }
   }
@@ -100,6 +101,7 @@ var form = modal.querySelector('.modal__form');
 var tel = modal.querySelector('#modal-tel');
 var email = modal.querySelector('#modal-email');
 var popupSucces = document.querySelector('.popup-success');
+var popupSuccessClose = document.querySelector('.popup-success__close');
 
 var isStorageSupport = true;
 var storage = '';
@@ -111,6 +113,8 @@ try {
 }
 
 form.addEventListener('submit', function (evt) {
+  popupSucces.classList.add('popup-success-show');
+
   if (!tel.value) {
     evt.preventDefault();
     modal.classList.remove('modal-error');
@@ -140,5 +144,20 @@ tel.addEventListener('input', function () {
     tel.setCustomValidity('Удалите лишние ' + (valueLength - MAX_TEL_LENGTH) + ' симв.');
   } else {
     tel.setCustomValidity('');
+  }
+});
+
+overlay.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  document.body.removeChild(overlay);
+  modal.classList.remove('modal-show');
+});
+
+popupSuccessClose.addEventListener('click', function (evt) {
+  evt.preventDefault();
+
+  if (popupSucces.classList.contains('popup-succes-show')) {
+    popupSuccessClose.classList.remove('popup-succes-show');
+    document.body.removeChild(overlay);
   }
 });
