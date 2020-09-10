@@ -1,5 +1,7 @@
 'use strict';
 
+var MIN_TEL_LENGTH = 10;
+var MAX_TEL_LENGTH = 11;
 var pageHeader = document.querySelector('.page-header');
 var headerToggle = document.querySelector('.page-header__toggle');
 var tabs = document.querySelector('.countrys');
@@ -47,11 +49,18 @@ var onModalButtonClick = function () {
   if (modal.classList.contains('modal-show') === true) {
     modal.classList.remove('modal-show');
     document.body.removeChild(overlay);
+  } else {
+    document.body.appendChild(overlay);
+    parent.className = 'overlay';
+    modal.classList.add('modal-show');
   }
 
-  document.body.appendChild(overlay);
-  parent.className = 'overlay';
-  modal.classList.add('modal-show');
+  if (storage) {
+    tel.value = storage;
+    email.focus();
+  } else {
+    tel.focus();
+  }
 };
 
 for (var j = 0; j < modalButton.length; j++) {
@@ -72,5 +81,66 @@ modalCloseButton.addEventListener('click', function (evt) {
 
   if (modal.classList.contains('modal-show')) {
     modal.classList.remove('modal-show');
+    document.body.removeChild(overlay);
+  }
+});
+
+window.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    evt.preventDefault();
+    if (modal.classList.contains('modal-show')) {
+      modal.classList.remove('modal-show');
+      modal.classList.remove('modal-error');
+      document.body.removeChild(overlay);
+    }
+  }
+});
+
+var form = modal.querySelector('.modal__form');
+var tel = modal.querySelector('#modal-tel');
+var email = modal.querySelector('#modal-email');
+var popupSucces = document.querySelector('.popup-success');
+
+var isStorageSupport = true;
+var storage = '';
+
+try {
+  storage = localStorage.getItem('tel');
+} catch (err) {
+  isStorageSupport = false;
+}
+
+form.addEventListener('submit', function (evt) {
+  if (!tel.value) {
+    evt.preventDefault();
+    modal.classList.remove('modal-error');
+    modal.offsetWidth = modal.offsetWidth;
+    modal.classList.add('modal-error');
+  } else {
+    if (isStorageSupport) {
+      localStorage.setItem('tel', tel.value);
+    }
+  }
+
+  popupSucces.classList.add('popup-success-show');
+});
+
+tel.addEventListener('invalid', function () {
+  if (tel.validity.valueMissing) {
+    tel.setCustomValidity('Данные не верны');
+  } else {
+    tel.setCustomValidity('');
+  }
+});
+
+tel.addEventListener('input', function () {
+  var valueLength = tel.value.length;
+
+  if (valueLength < MIN_TEL_LENGTH) {
+    tel.setCustomValidity('Вам нужно ввести ещё ' + (MIN_TEL_LENGTH - valueLength) + ' симв.');
+  } else if (valueLength > MAX_TEL_LENGTH) {
+    tel.setCustomValidity('Удалите лишние ' + (valueLength - MAX_TEL_LENGTH) + ' симв.');
+  } else {
+    tel.setCustomValidity('');
   }
 });
